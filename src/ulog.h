@@ -90,9 +90,9 @@ typedef enum {
 
 #ifdef ULOG_ENABLED
   #define ULOG_INIT() ulog_init()
-  #define ULOG_SUBSCRIBE(a, b) ulog_subscribe(a, b)
-  #define ULOG_UNSUBSCRIBE(a) ulog_unsubscribe(a)
-  #define ULOG_LEVEL_NAME(a) ulog_level_name(a)
+  #define ULOG_SUBSCRIBE(subscriber, level) ulog_subscribe(subscriber, level)
+  #define ULOG_UNSUBSCRIBE(subscriber) ulog_unsubscribe(subscriber)
+  #define ULOG_LEVEL_NAME(level) ulog_level_name(level)
   #define ULOG(...) ulog_message(__VA_ARGS__)
   #define ULOG_TRACE(...) ulog_message(ULOG_TRACE_LEVEL, __VA_ARGS__)
   #define ULOG_DEBUG(...) ulog_message(ULOG_DEBUG_LEVEL, __VA_ARGS__)
@@ -104,9 +104,9 @@ typedef enum {
 #else
   // uLog vanishes when disabled at compile time...
   #define ULOG_INIT() do {} while(0)
-  #define ULOG_SUBSCRIBE(a, b) do {} while(0)
-  #define ULOG_UNSUBSCRIBE(a) do {} while(0)
-  #define ULOG_LEVEL_NAME(a) do {} while(0)
+  #define ULOG_SUBSCRIBE(subscriber, level) do {} while(0)
+  #define ULOG_UNSUBSCRIBE(subscriber) do {} while(0)
+  #define ULOG_LEVEL_NAME(level) do {} while(0)
   #define ULOG(s, f, ...) do {} while(0)
   #define ULOG_TRACE(f, ...) do {} while(0)
   #define ULOG_DEBUG(f, ...) do {} while(0)
